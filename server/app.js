@@ -3,8 +3,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/node200-mongoose-blog-api', { useNewUrlParser: true }, (err) => {
+const MLAB_URI = process.env.MLAB_URI;
+
+
+mongoose.connect(MLAB_URI, { useNewUrlParser: true }, (err) => {
   if(err) {
     return console.log(err, 'An internal server error has occured');
   }
